@@ -5,6 +5,10 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 	public class Products {
+public static void main(String args[])
+{
+products();
+}
 
 		static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		static String st;
@@ -31,7 +35,7 @@ import java.util.*;
 		public void setX(String x) {
 			this.x = x;
 		}
-	   void products()throws IOException{
+	  static void products()throws IOException{
 			
 		       ArrayList<String> sr=new ArrayList<String>();
 		         sr.add("ladies-wear");
