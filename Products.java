@@ -1,21 +1,21 @@
-package p1.p2;
-import java.io.BufferedReader;
+package cart;
+
+
+	import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
 	public class Products {
-public static void main(String args[])
-{
-products();
-}
 
+		
 		static BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		static String st;
 		private static String x;
 		private static int y;
-		//static String yn;
 		private static int z;
+		 private static int total=0;
+		//static String yn;
 		
 		public static int getZ() {
 			return z;
@@ -35,7 +35,7 @@ products();
 		public void setX(String x) {
 			this.x = x;
 		}
-	  static void products()throws IOException{
+	  void products()throws IOException{
 			
 		       ArrayList<String> sr=new ArrayList<String>();
 		         sr.add("ladies-wear");
@@ -59,7 +59,7 @@ products();
 	         mens();
 	         break;
 	case 3:System.out.println("welcome to kids-wear");
-	         kidsWear();
+	        kidsWear();
 	         break;
 	case 4:System.out.println("welcome to accessories");
 	         accessories();
@@ -69,141 +69,119 @@ products();
 	       }  
 
 	}
-	void mens()throws IOException
+	 void ladies()throws IOException
 	{   
-		Hashtable<String, Integer> b=new Hashtable<String, Integer>();
-	    b.put("SHIRTS",   new Integer (20));
-	    b.put("TSHIRTS",  new Integer (20));
-	    b.put("SHOES",    new Integer (20));
-	  
-	    System.out.println("Initial hash table value: "+b);
-	    System.out.println("enter your ITEMS");
-	    System.in.read();
-	    x=br.readLine();
-	    System.out.println("enter your quantity");
-	    this.y=Integer.parseInt(br.readLine());
-	    System.out.println(x+ " ITEMS ARE ADDED INTO THE CARTS  "+y);
-	    System.out.println("ENTER THE AMOUNT OF THE ITEM");
-	    z=Integer.parseInt(br.readLine());
-	   
-	    int bal=((Integer)b.get(x)).intValue();
-
-	      b.put(x,new Integer(bal-y));
-	      
-	   System.out.println("Initial hash table value: "+b);
-	   System.out.println("items\t\tqualityprice");
-
-       for(Map.Entry m:b.entrySet()){  
-       	   System.out.println(m.getKey()+"\t"+m.getValue());}
-       System.out.println("do you want to choose again y/n");
-       char choose=(char) br.read();
-       if(choose=='Y'){
-    	   while(true){   mens();   }
-       }
-	   }
-	void kidsWear()throws IOException
-	{   
-		Hashtable<String, Integer> b=new Hashtable<String, Integer>();
-	    b.put("FROCKS",  new Integer (20));
-	    b.put("SKIRT",   new Integer (20));
-	    b.put("TOYS",    new Integer (20));
-	    b.put("DOLLS",   new Integer (20));
-	    System.out.println("Initial hash table value: "+b);
-	    System.out.println("enter your ITEMS");
-	    x=br.readLine();
-	    System.out.println("enter your quantity");
-	    this.y=Integer.parseInt(br.readLine());
-	    System.out.println(x+ " ITEMS ARE ADDED INTO THE CARTS  "+y);
-	    System.out.println("ENTER THE AMOUNT OF THE ITEM");
-	    this.z=Integer.parseInt(br.readLine());
-	    
-	   
-	   int bal=((Integer)b.get(x)).intValue();
-
-	      b.put(x,new Integer(bal-y));
-	      
-	   System.out.println("Initial hash table value: "+b);
-
-	   System.out.println("items\t\tquality");
-
-       for(Map.Entry m:b.entrySet()){  
-       	   System.out.println(m.getKey()+"\t"+m.getValue());}
-       System.out.println("do you want to choose again y/n");
-       char choose=(char) br.read();
-       if(choose=='Y'){
-    	   while(true){   kidsWear(); }
-       }
-	   
-	   }
-	void ladies()throws IOException
-	{   
+		boolean choice=true;
+		  while(choice){ 
 		Hashtable<String, Integer> b=new Hashtable<String, Integer>();
 	    b.put("LEGGINGS",  new Integer (20));
 	    b.put("PANTS",     new Integer (20));
 	    b.put("JACKETS",   new Integer (20));
 	    b.put("KURTHIES",  new Integer (20));
-	    System.out.println("Initial hash table value: "+b);
+	    System.out.println(" Stock value: "+b);
 	    System.out.println("enter your ITEMS");
+	   
 	    x=br.readLine();
+	    
 	    System.out.println("enter your quantity");
-	    this.y=Integer.parseInt(br.readLine());
-	    System.out.println(x+ " ITEMS ARE ADDED INTO THE CARTS  "+y);
+	    y=Integer.parseInt(br.readLine());
+	    System.out.println(x+ ": ITEMS ARE ADDED INTO THE CARTS  "+y);
 	    System.out.println("ENTER THE AMOUNT OF THE ITEM");
 	    z=Integer.parseInt(br.readLine());
-	   
 	   int bal=((Integer)b.get(x)).intValue();
-
-	      b.put(x,new Integer(bal-y));
-	      
+	   b.put(x,new Integer(bal-y));   
 	   System.out.println("Initial hash table value: "+b);
-
-	   System.out.println("items\t\tquality");
-
-       for(Map.Entry m:b.entrySet()){  
-       	   System.out.println(m.getKey()+"\t"+m.getValue());}
-       System.out.println("do you want to choose again y/n");
-       char choose=(char) br.read();
-        if(choose=='Y'){
-    	   while(true){   ladies();   }
-       }
-
+       System.out.println("items\tquality\tprice");
+	   for(Map.Entry m:b.entrySet()){  
+       System.out.println(m.getKey()+"\t"+m.getValue());
 	   }
-	void accessories()throws IOException
-	{   
-		Hashtable<String, Integer> b=new Hashtable<String, Integer>();
-	    b.put("EAR-RINGS",  new Integer (20));
-	    b.put("SHOES",      new Integer (20));
-	    b.put("BELTS",      new Integer (20));
-	    b.put("TOYS",       new Integer (20));
-	    System.out.println("Initial hash table value: "+b);
-	    System.out.println("enter your ITEMS");
-	    x=br.readLine();
-	    System.out.println("enter your quantity");
-	    this.y=Integer.parseInt(br.readLine());
-	    System.out.println(x+ " ITEMS ARE ADDED INTO THE CARTS  "+y);
-	    System.out.println("ENTER THE AMOUNT OF THE ITEM");
-	    z=Integer.parseInt(br.readLine());
+	   System.out.println("Do you want to go to Ladies Shopping Enter your choice y/n");//
+	  char choose=(char) br.read();
+       if(choose=='n')
+    	   choice=false;
+      }
+      
+	}
 	   
-	    int bal=((Integer)b.get(x)).intValue();
+		void mens()throws IOException
+		{   
+			Hashtable<String, Integer> b=new Hashtable<String, Integer>();
+		    b.put("SHIRTS",  new Integer (20));
+		    b.put("TSHIRTS", new Integer (20));
+		    b.put("SHOES",   new Integer (20));
+		  
+		    System.out.println("Initial hash table value: "+b);
+		    System.out.println("enter your ITEMS");
+		    x=br.readLine();
+		    System.out.println("enter your quantity");
+		    y=Integer.parseInt(br.readLine());
+		    System.out.println(x+ " ITEMS ARE ADDED INTO THE CARTS  "+y);
+		    System.out.println("ENTER THE AMOUNT OF THE ITEM");
+		    z=Integer.parseInt(br.readLine());
+		    int bal=((Integer)b.get(x)).intValue();
 
-	    b.put(x,new Integer(bal-y));
-	      
-	    System.out.println("Initial hash table value: "+b);
-        System.out.println("items\t\tquality");
+		      b.put(x,new Integer(bal-y));
+		      
+		   System.out.println("Initial hash table value: "+b);
+		   System.out.println("items\t\tqualityprice");
 
-        for(Map.Entry m:b.entrySet()){  
-        	   System.out.println(m.getKey()+"\t"+m.getValue());}
-        System.out.println("do you want to choose again y/n");
-        char choose=(char) br.read();
-        if(choose=='Y'){
-     	   while(true){   accessories();   }
-        }
+	       for(Map.Entry m:b.entrySet()){  
+	       	   System.out.println(m.getKey()+" "+m.getValue());}
+		   }
+		 void kidsWear()throws IOException
+		{   
+			Hashtable<String, Integer> b=new Hashtable<String, Integer>();
+		    b.put("FROCKS", new Integer (20));
+		    b.put("SKIRT",  new Integer (20));
+		    b.put("TOYS",   new Integer (20));
+		    b.put("DOLLS",  new Integer (20));
+		    System.out.println("Initial hash table value: "+b);
+		    System.out.println("enter your ITEMS");
+		    x=br.readLine();
+		    System.out.println("enter your quantity");
+		    y=Integer.parseInt(br.readLine());
+		    System.out.println(x+ " ITEMS ARE ADDED INTO THE CARTS  "+y);
+		    System.out.println("ENTER THE AMOUNT OF THE ITEM");
+		    z=Integer.parseInt(br.readLine());
+		    int bal=((Integer)b.get(x)).intValue();
+            b.put(x,new Integer(bal-y));
+		    System.out.println("Initial hash table value: "+b);
+		    System.out.println("items\t\tquality");
 
-        }
+	       for(Map.Entry m:b.entrySet()){  
+	       	   System.out.println(m.getKey()+" "+m.getValue());}
+		   
+		   }
+		void accessories()throws IOException
+		{   
+			Hashtable<String, Integer> b=new Hashtable<String, Integer>();
+		    b.put("EAR-RINGS",  new Integer (20));
+		    b.put("SHOES",      new Integer (20));
+		    b.put("BELTS",      new Integer (20));
+		    b.put("TOYS",       new Integer (20));
+		    //System.out.println("Initial hash table value: "+b);
+		    System.out.println("enter your ITEMS");
+		    x=br.readLine();
+		    System.out.println("enter your quantity");
+		    y=Integer.parseInt(br.readLine());
+		    System.out.println(x+ " ITEMS ARE ADDED INTO THE CARTS  "+y);
+		    System.out.println("ENTER THE AMOUNT OF THE ITEM");
+		    z=Integer.parseInt(br.readLine());
+		   
+		    int bal=((Integer)b.get(x)).intValue();
 
-	   
-	   }
+		    b.put(x,new Integer(bal-y));
+		      
+		    System.out.println("Initial hash table value: "+b);
+	        System.out.println("items\t\tquality");
+
+	        for(Map.Entry m:b.entrySet()){  
+	        	   System.out.println(m.getKey()+" "+m.getValue());}
+
+	        }
+		
+	}
 	
 	
 
-
+	
